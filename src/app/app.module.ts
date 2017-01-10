@@ -12,6 +12,9 @@ import { GridComponent } from './game/grid/grid.component';
 import {routing} from "./app.routing";
 import {HttpService} from "./http.service";
 import {WebsocketService} from "./websocket.service";
+import { CellComponent } from './game/grid/cell.component';
+import {DataproviderService} from "./dataprovider.service";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -20,17 +23,19 @@ import {WebsocketService} from "./websocket.service";
     HeaderComponent,
     InstructionsComponent,
     HomeComponent,
-    GridComponent
+    GridComponent,
+    CellComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     HttpModule,
     routing
   ],
   providers: [
-    HttpService,
-    WebsocketService
+    WebsocketService,
+    DataproviderService
   ],
   bootstrap: [AppComponent]
 })

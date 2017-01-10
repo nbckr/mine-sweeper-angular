@@ -1,8 +1,7 @@
-import {Cell} from "./grid/cell.model";
+import {GridComponent} from "./grid/grid.component";
 
 export class GameData {
 
   constructor(public state: String,
-              public grid: Cell[]) {}
-              //public grid: Cell[][]) {}
+              public grid: Object) {}
 }
