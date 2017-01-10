@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DataproviderService} from "../../dataprovider.service";
+import {DataProviderService} from "../../dataprovider.service";
 import {Subscription, Observable} from "rxjs";
 
 @Component({
@@ -19,14 +19,17 @@ import {Subscription, Observable} from "rxjs";
         </div>
       </div>
   `,
-  styles: []
+  styles: [`
+    :host {
+    }
+  `]
 })
 export class GridComponent implements OnInit {
 
-  gridData: Object;//Cell[][];
+  gridData: Object;
   private subscription: Subscription;
 
-  constructor(private dataproviderService: DataproviderService) {
+  constructor(private dataproviderService: DataProviderService) {
   }
 
   ngOnInit() {

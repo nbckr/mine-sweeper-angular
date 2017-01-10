@@ -1,0 +1,73 @@
+@light-grey: #e1e1e1;
+@black: #666;
+@green: #8BC34A;
+@yellow-green: #CDDC39;
+@yellow-1: #FFEB3B;
+@yellow-2: #FFC107;
+@yellow-3: #ea7f3b;
+@red: #c0392b;
+
+:host {
+  display: inline-block;
+  margin: 3px;
+  width: 40px;
+  height: 40px;
+
+
+  text-align:center;
+  vertical-align:middle;
+}
+button {
+  cursor: pointer;
+
+  color: black;
+  border: solid 1px black;
+  text-decoration: none;
+  border-radius: 4px;
+
+  transition: background-color 250ms linear;
+
+  width: 40px;
+  height: 40px;
+  //font-size: 2.5vw;
+  //text-align: center;
+  //margin: 3px;
+
+  user-select: none;
+
+  &.hidden {
+    background: @light-grey !important;
+  }
+  &.surrounding-0 {
+    background-color: @green;
+  }
+  &.surrounding-1 {
+    background-color: @yellow-1;
+  }
+  &.surrounding-2 {
+    background-color: @yellow-2;
+  }
+  &.surrounding-3, &.surrounding-4, &.surrounding-5, &.surrounding-6, &.surrounding-7, &.surrounding-8 {
+    background-color: @yellow-3;
+  }
+  &.mine {
+    background-color: @red;
+  }
+  &.vibrate {
+    // copied from hvr-buzz
+    -webkit-transform: perspective(1px) translateZ(0) scale(1.2, 1.2);
+    transform: perspective(1px) translateZ(0) scale(1.2, 1.2);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-animation-name: hvr-buzz;
+    animation-name: hvr-buzz;
+    -webkit-animation-duration: 0.15s;
+    animation-duration: 0.15s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+}
+.fa {
+  font-size: 100%;
+}

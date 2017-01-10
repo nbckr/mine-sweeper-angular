@@ -6,7 +6,7 @@ import {GridComponent} from "./game/grid/grid.component";
 //import 'rxjs/Rx';
 
 @Injectable()
-export class DataproviderService {
+export class DataProviderService {
 
   private socket: Subject<any>;
   private counterSubscription: Subscription;

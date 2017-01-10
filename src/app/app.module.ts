@@ -13,7 +13,7 @@ import {routing} from "./app.routing";
 import {HttpService} from "./http.service";
 import {WebsocketService} from "./websocket.service";
 import { CellComponent } from './game/grid/cell.component';
-import {DataproviderService} from "./dataprovider.service";
+import {DataProviderService} from "./dataprovider.service";
 import {CommonModule} from "@angular/common";
 
 @NgModule({
@@ -35,7 +35,7 @@ import {CommonModule} from "@angular/common";
   ],
   providers: [
     WebsocketService,
-    DataproviderService
+    DataProviderService
   ],
   bootstrap: [AppComponent]
 })

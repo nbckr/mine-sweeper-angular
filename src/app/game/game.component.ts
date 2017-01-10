@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {DataproviderService} from "../dataprovider.service";
+import {DataProviderService} from "../dataprovider.service";
 
 @Component({
   selector: 'app-game',
@@ -8,6 +8,14 @@ import {DataproviderService} from "../dataprovider.service";
 })
 export class GameComponent {
 
-  constructor() {}
+  constructor(private dataProviderService: DataProviderService) {}
+
+  onNewGame() {
+    this.dataProviderService.sendData({
+      action: 'start',
+      size: 'small',
+      difficulty: 'beginner'
+    })
+  }
 
 }

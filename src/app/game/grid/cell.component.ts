@@ -1,27 +1,21 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Position} from "./position.model";
-import {DataproviderService} from "../../dataprovider.service";
+import {DataProviderService} from "../../dataprovider.service";
 
 @Component({
   selector: 'app-cell',
   template: `
-    <div (click)="onClick()" (contextmenu)="onRightClick()">
-      <button *ngIf="this.isRevealed && !this.hasMine" class="btn btn-outline-primary">{{this.surroundingMines}}</button>
-      <button *ngIf="this.isRevealed && this.hasMine" class="btn btn-outline-danger">[M]</button>
-      <button *ngIf="this.isFlagged && !this.isRevealed" class="btn btn-outline-info">[F]</button>
-    </div>
+    <button (click)="onClick()" (contextmenu)="onRightClick()" [ngClass]="{'mine': hasMine, 'hidden': !isRevealed }"
+    
+    
+      class="btn surrounding-{{ surroundingMines }}">
+      <span *ngIf="!this.isRevealed && !this.isFlagged"><i class="fa fa-camera-retro fa-3x"></i></span>
+      <span *ngIf="!this.isRevealed && this.isFlagged" class="fa fa-flag"></span>
+      <span *ngIf="this.isRevealed && !this.hasMine">{{this.surroundingMines}}</span>
+      <span *ngIf="this.isRevealed && this.hasMine" class="fa fa-bomb"></span>
+    </button>
   `,
-  styles: [`
-    :host {
-      display: inline-block;
-      margin: 3px;
-      width: 40px;
-      height: 40px;  
-    }
-    button {
-      cursor: pointer;
-    }
-  `]
+  styleUrls: ['./cell.component.less']
 })
 export class CellComponent implements OnInit {
   @Input() hasMine: boolean = false;
@@ -30,7 +24,7 @@ export class CellComponent implements OnInit {
   @Input() position: Position = {row: 0, col: 0};
   @Input() surroundingMines: number = 0;
 
-  constructor(public dataproviderService: DataproviderService) {}
+  constructor(public dataproviderService: DataProviderService) {}
 
   ngOnInit() {
   }

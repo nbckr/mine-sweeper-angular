@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DataproviderService} from "./dataprovider.service";
+import {DataProviderService} from "./dataprovider.service";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import {DataproviderService} from "./dataprovider.service";
 export class AppComponent implements OnInit{
   title = 'what';
 
-  constructor(public dataproviderService: DataproviderService) {}
+  constructor(public dataproviderService: DataProviderService) {}
 
   ngOnInit() {
     this.dataproviderService.initService();
