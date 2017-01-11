@@ -1,0 +1,49 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title" id="myModalLabel">Start new game</h4>
+</div>
+
+<div class="modal-body">
+
+  <div class="row">
+    <div class="col-sm-6 text-center">
+      <img src="/assets/{{ options.size }}.svg">
+    </div>
+    <div class="col-sm-6 text-center">
+      <img src="/assets/{{ options.difficulty }}.svg">
+    </div>
+  </div>
+  <hr>
+
+  <form>
+    <div class="form-group" id="choose-size">
+      <h3>Choose grid size</h3>
+      <p class="form-text">How'd you like your grid today? Feeling like a giant?</p>
+
+      <div class="btn-group">
+        <label *ngFor="let s of sizes" class="btn btn-primary">
+          <input class="form-check-input" type="radio" name="size" [(ngModel)]="options.size" [value]="s"> {{ s }}
+        </label>
+      </div>
+    </div>
+    <hr>
+
+    <div class="form-group" id="choose-difficulty">
+      <h3>Choose difficulty</h3>
+      <p class="form-text">How many mines? Don't be a baby, show off your mad skillz!</p>
+
+      <div class="btn-group">
+        <label *ngFor="let d of difficulties" class="btn btn-primary">
+          <input class="form-check-input" type="radio" name="size" [(ngModel)]="options.difficulty" [value]="d"> {{ d }}
+        </label>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="this.dialog.close()">Hell no!</button>
+  <button type="button" class="btn btn-primary" (click)="onStartGame()" autofocus>Aww yeah!</button>
+</div>
