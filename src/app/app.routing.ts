@@ -1,12 +1,14 @@
 import {Routes, RouterModule} from "@angular/router";
-import {InstructionsComponent} from "./instructions/instructions.component";
-import {HomeComponent} from "./home/home.component";
-import {GameComponent} from "./game/game.component";
+import {InstructionsPageComponent} from "./pages/instructions-page.component";
+import {HomePageComponent} from "./pages/home-page.component";
+import {GamePageComponent} from "./pages/game-page.component";
+import {AboutPageComponent} from "./pages/about-page.component";
 
 const APP_ROUTES: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'instructions', component: InstructionsComponent},
-  {path: 'game', component: GameComponent}
+  {path: '', component: HomePageComponent},
+  {path: 'game', component: GamePageComponent},
+  {path: 'instructions', component: InstructionsPageComponent},
+  {path: 'about', component: AboutPageComponent}
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

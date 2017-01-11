@@ -1,8 +1,8 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Subject, Subscription, Observable, ReplaySubject} from "rxjs";
-import {GameData} from "./game/gamedata.model";
+import {GameData} from "../game/gamedata.model";
 import {WebsocketService} from "./websocket.service";
-import {GridComponent} from "./game/grid/grid.component";
+import {GridComponent} from "../game/grid.component";
 //import 'rxjs/Rx';
 
 @Injectable()
@@ -2055,21 +2055,7 @@ export class DataProviderService {
   }
 
   public getGameData(): Observable<GameData> {
-
-    console.log("get grid data");
-
     return this.gameDataSubject;
-
-    //console.log("getshit");
-    //if (this.gameData) {
-    //  console.log("yes");
-    //  console.log(this.gameData);
-    //  return this.gameData.grid;
-    //} else {
-    //  console.log("no");
-    //  this.triggerWebSocket();
-    //  return null;
-    //}
   }
 
   /**

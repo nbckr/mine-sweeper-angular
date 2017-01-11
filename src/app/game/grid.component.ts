@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {DataProviderService} from "../../dataprovider.service";
+import {DataProviderService} from "../shared/dataprovider.service";
 import {Subscription, Observable} from "rxjs";
 
 @Component({
   selector: 'app-grid',
   template: `
-      <div *ngIf="gridData" class="center-block" style="border:solid black 1px">
+      <div *ngIf="gridData" class="center-block" id="grid">
         <div *ngFor="let row of gridData" class="row">
             <div *ngFor="let cell of row">
               <app-cell
@@ -21,6 +21,12 @@ import {Subscription, Observable} from "rxjs";
   `,
   styles: [`
     :host {
+      display: block;
+      margin: 10px auto;
+    }
+    #grid {
+      display: inline-block;
+      align-content: center;
     }
   `]
 })

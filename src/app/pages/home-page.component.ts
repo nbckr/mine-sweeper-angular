@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
+  templateUrl: 'home-page.component.html',
   styles: []
 })
-export class HomeComponent implements OnInit {
+export class HomePageComponent implements OnInit {
 
   constructor() { }
 

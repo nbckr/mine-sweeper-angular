@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Position} from "./position.model";
-import {DataProviderService} from "../../dataprovider.service";
+import {DataProviderService} from "../shared/dataprovider.service";
 
 @Component({
   selector: 'app-cell',
@@ -9,13 +9,13 @@ import {DataProviderService} from "../../dataprovider.service";
     
     
       class="btn surrounding-{{ surroundingMines }}">
-      <span *ngIf="!this.isRevealed && !this.isFlagged"><i class="fa fa-camera-retro fa-3x"></i></span>
+      <span *ngIf="!this.isRevealed && !this.isFlagged"></span>
       <span *ngIf="!this.isRevealed && this.isFlagged" class="fa fa-flag"></span>
       <span *ngIf="this.isRevealed && !this.hasMine">{{this.surroundingMines}}</span>
       <span *ngIf="this.isRevealed && this.hasMine" class="fa fa-bomb"></span>
     </button>
   `,
-  styleUrls: ['./cell.component.less']
+  styleUrls: ['cell.component.less']
 })
 export class CellComponent implements OnInit {
   @Input() hasMine: boolean = false;

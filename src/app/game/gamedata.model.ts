@@ -1,4 +1,4 @@
-import {GridComponent} from "./grid/grid.component";
+import {GridComponent} from "./grid.component";
 
 export class GameData {
 

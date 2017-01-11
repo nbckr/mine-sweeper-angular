@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Fix some classes needed for Bootstrap Modals, but renamed vom V3 to V4 ("in" -> "show") */
+.fade.in {
+  opacity: 1;
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.modal-backdrop.in {
+  opacity: 0.5;
+}
