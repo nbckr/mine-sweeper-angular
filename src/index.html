@@ -11,5 +11,17 @@
 </head>
 <body>
   <app-root>Loading...</app-root>
+
+  <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAyrbUQ3mDVVOhcANZfCWpDoCC6HZgKyvU",
+      authDomain: "mine-sweeper-polymer.firebaseapp.com",
+      databaseURL: "https://mine-sweeper-polymer.firebaseio.com/",
+      messagingSenderId: "996548128709"
+    };
+    firebase.initializeApp(config);
+  </script>
 </body>
 </html>
