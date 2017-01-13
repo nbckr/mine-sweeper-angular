@@ -17,6 +17,12 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     // Init data provider as early as possible to open WebSockets
     this.dataproviderService.initService();
+
+    // Prevent right clicks - would be better to only disable within grid
+    document.oncontextmenu = function(e){
+      e.stopPropagation();
+      e.preventDefault();
+    }
   }
 
 }
