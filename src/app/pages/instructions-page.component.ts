@@ -4,6 +4,9 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-instructions',
   templateUrl: 'instructions-page.component.html',
   styles: [`
+    h3 {
+      margin: .9em .4em;
+    }
     .icon {
      width: 6em;
     }
@@ -17,7 +20,7 @@ import { Component, OnInit } from '@angular/core';
     }
     .lol {
       width: 75%;
-      margin: 1em auto;
+      margin: 2em auto 1em auto;
       display: block;
     }
   `]
