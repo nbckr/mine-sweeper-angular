@@ -35,20 +35,6 @@ export class DataProviderService {
     );
   }
 
-  private launchCounter() {
-//Counter already initialized
-    if (this.counterSubscription) {
-      this.counterSubscription.unsubscribe();
-    }
-    let counter = Observable.interval(1000);
-    this.counterSubscription = counter.subscribe(
-      num => {
-        this.sentMessage = 'Websocket Message ' + num;
-        this.socket.next(this.sentMessage);
-      }
-    );
-  }
-
   public sendData(data: Object) {
     this.socket.next(data);
   }
@@ -66,8 +52,7 @@ export class DataProviderService {
   }
 
   /**
-   * No data yet -
-   * @private
+   * No data yet
    */
   public triggerWebSocket() {
     console.log("triggerWS");

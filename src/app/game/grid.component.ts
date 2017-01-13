@@ -46,18 +46,5 @@ export class GridComponent implements OnInit {
         this.gridData = value.grid;
       }
     );
-
-    //Counter already initializedffa
-    //if (this.subscription && !this.gridData) {
-    //  this.subscription.unsubscribe();
-    //}
-    //let counter = Observable.interval(4000);
-    //this.subscription = counter.subscribe(
-    //  num => {
-    //    this.gridData = this.dataproviderService.getGameData();
-    //  }
-    //);
   }
-
-
 }
