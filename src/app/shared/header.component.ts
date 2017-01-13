@@ -14,9 +14,10 @@ import {AuthService} from "./auth.service";
     .btn {
       //padding: 0;
       //margin: 0.25rem 0.5rem;
+      cursor: pointer;
     }
     #user-photo {
-      height: 2.7em;
+      height: 2.4em;
       margin-right: 1em;
     }
     @media screen and (min-width: 350px) {

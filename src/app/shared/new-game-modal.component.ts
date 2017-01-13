@@ -18,6 +18,7 @@ export class CustomModalContext extends BSModalContext {
         }
         label {
           text-transform: capitalize;
+          cursor: pointer;
         }
         input[type=radio], input[type=checkbox] {
             visibility: hidden;

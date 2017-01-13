@@ -10,6 +10,9 @@ import {overlayConfigFactory} from "angular2-modal";
   styles: [`
     :host {
     }
+    .btn {
+      cursor: pointer;
+    }
   `]
 })
 export class GamePageComponent {
