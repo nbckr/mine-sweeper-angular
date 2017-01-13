@@ -4,8 +4,21 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-instructions',
   templateUrl: 'instructions-page.component.html',
   styles: [`
-    img {
+    .icon {
      width: 6em;
+    }
+    .left {
+     margin: 0 1em 1em 0;
+     float: left;
+    }
+    .right {
+     margin: 0 0 1em 1em;
+     float: right;
+    }
+    .lol {
+      width: 75%;
+      margin: 1em auto;
+      display: block;
     }
   `]
 })
