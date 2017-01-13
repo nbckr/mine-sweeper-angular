@@ -20,6 +20,7 @@ import {ModalModule} from "angular2-modal";
 import {NewGameModalComponent} from "./shared/new-game-modal.component";
 import { AboutPageComponent } from './pages/about-page.component';
 import {AuthService} from "./shared/auth.service";
+import { MessageComponent } from './shared/message.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {AuthService} from "./shared/auth.service";
     GridComponent,
     CellComponent,
     NewGameModalComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,
