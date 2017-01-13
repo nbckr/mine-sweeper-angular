@@ -19,6 +19,7 @@ import {BootstrapModalModule} from "angular2-modal/plugins/bootstrap";
 import {ModalModule} from "angular2-modal";
 import {NewGameModalComponent} from "./shared/new-game-modal.component";
 import { AboutPageComponent } from './pages/about-page.component';
+import {AuthService} from "./shared/auth.service";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AboutPageComponent } from './pages/about-page.component';
   ],
   providers: [
     WebsocketService,
-    DataProviderService
+    DataProviderService,
+    AuthService
   ],
   entryComponents: [
     NewGameModalComponent
