@@ -8,9 +8,9 @@ import {DataProviderService} from "../shared/dataprovider.service";
 
 
 
-    <button (click)="onClick()" (contextmenu)="onRightClick(e)" 
+    <button (click)="onClick()" (contextmenu)="onRightClick()" 
       class="surrounding-{{ surroundingMines }}"
-      [ngClass]="{'mine': hasMine, 'hidden': !isRevealed, 'shake-crazy shake-constant': hasMine && isRevealed }">
+      [ngClass]="{'mine': hasMine, 'hidden': !isRevealed, 'shake-crazy shake-constant': hasMine && isRevealed, 'shake-hard shake-constant': hasMine && state === 'GAME_LOST' }">
       <span *ngIf="!this.isRevealed && !this.isFlagged"></span>
       <div *ngIf="!this.isRevealed && this.isFlagged" class="fa fa-flag"></div>
       <span *ngIf="this.isRevealed && !this.hasMine">{{this.surroundingMines}}</span>
@@ -27,6 +27,7 @@ export class CellComponent implements OnInit {
   @Input() isRevealed: boolean = false;
   @Input() position: Position = {row: 0, col: 0};
   @Input() surroundingMines: number = 0;
+  @Input() state: string;
 
   constructor(public dataproviderService: DataProviderService) {}
 
