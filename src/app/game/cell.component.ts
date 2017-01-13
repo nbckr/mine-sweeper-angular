@@ -5,15 +5,21 @@ import {DataProviderService} from "../shared/dataprovider.service";
 @Component({
   selector: 'app-cell',
   template: `
-    <button (click)="onClick()" (contextmenu)="onRightClick(e)" [ngClass]="{'mine': hasMine, 'hidden': !isRevealed, 'vibrate': hasMine && isRevealed }"
-      class="surrounding-{{ surroundingMines }}">
+
+
+
+    <button (click)="onClick()" (contextmenu)="onRightClick(e)" 
+      class="surrounding-{{ surroundingMines }}"
+      [ngClass]="{'mine': hasMine, 'hidden': !isRevealed, 'shake-crazy shake-constant': hasMine && isRevealed }">
       <span *ngIf="!this.isRevealed && !this.isFlagged"></span>
       <div *ngIf="!this.isRevealed && this.isFlagged" class="fa fa-flag"></div>
       <span *ngIf="this.isRevealed && !this.hasMine">{{this.surroundingMines}}</span>
       <span *ngIf="this.isRevealed && this.hasMine" class="fa fa-bomb"></span>
     </button>
   `,
-  styleUrls: ['cell.component.less']
+  styleUrls: [
+    'cell.component.less'
+  ]
 })
 export class CellComponent implements OnInit {
   @Input() hasMine: boolean = false;
