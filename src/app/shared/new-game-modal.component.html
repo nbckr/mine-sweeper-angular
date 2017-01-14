@@ -20,9 +20,9 @@
             <h3>Choose grid size</h3>
             <p class="form-text">How'd you like your grid today? Feeling like a giant?</p>
 
-            <div class="btn-group" data-toggle="buttons">
-                <label *ngFor="let s of sizes" class="btn btn-primary" [class.active]="s === 'small'">
-                    <input class="form-check-input" type="radio" name="size" [(ngModel)]="options.size" [value]="s" [attr.checked]="s === 'small'"> {{ s }}
+            <div class="btn-group">
+                <label *ngFor="let s of sizes" class="btn btn-primary" [class.active]="options.size === s">
+                    <input class="form-check-input" type="radio" name="size" [(ngModel)]="options.size" [value]="s" [attr.checked]="options.size === s"> {{ s }}
                 </label>
             </div>
         </div>
@@ -38,9 +38,12 @@
             <h3>Choose difficulty</h3>
             <p class="form-text">How many mines? Don't be a baby, show off your mad skillz!</p>
 
-            <div class="btn-group" data-toggle="buttons">
-                <label *ngFor="let d of difficulties" class="btn btn-primary" [class.active]="d === 'beginner'">
-                    <input class="form-check-input" type="radio" name="size" [(ngModel)]="options.difficulty" [value]="d" [attr.checked]="d === 'beginner'"> {{ d }}
+            <div class="btn-group">
+                <label *ngFor="let d of difficulties" class="btn btn-primary" [class.active]="options.difficulty === d">
+                    <input class="form-check-input" type="radio" name="difficulty"
+                           [(ngModel)]="options.difficulty"
+                           [value]="d"
+                           [attr.checked]="options.difficulty === d"> {{ d }}
                 </label>
             </div>
         </div>
