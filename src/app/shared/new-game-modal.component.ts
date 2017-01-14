@@ -13,9 +13,6 @@ export class CustomModalContext extends BSModalContext {
   selector: 'app-modal',
   templateUrl: 'new-game-modal.component.html',
   styles: [`
-    .modal-dialog {
-      min-width: 362px;
-    }
     img {
       width: 50%;
     }
@@ -23,12 +20,15 @@ export class CustomModalContext extends BSModalContext {
       text-transform: capitalize;
       cursor: pointer;
     }
+    button {
+      cursor: pointer;
+    }
     input[type=radio], input[type=checkbox] {
         visibility: hidden;
     }
   `]
 })
-export class NewGameModalComponent implements CloseGuard{
+export class NewGameModalComponent implements CloseGuard {
   sizes = [
     'small', 'medium', 'large'
   ];
