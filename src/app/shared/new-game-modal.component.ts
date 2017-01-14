@@ -13,17 +13,20 @@ export class CustomModalContext extends BSModalContext {
   selector: 'app-modal',
   templateUrl: 'new-game-modal.component.html',
   styles: [`
-        img {
-          width: 50%;
-        }
-        label {
-          text-transform: capitalize;
-          cursor: pointer;
-        }
-        input[type=radio], input[type=checkbox] {
-            visibility: hidden;
-        }
-    `]
+    .modal-dialog {
+      min-width: 362px;
+    }
+    img {
+      width: 50%;
+    }
+    label {
+      text-transform: capitalize;
+      cursor: pointer;
+    }
+    input[type=radio], input[type=checkbox] {
+        visibility: hidden;
+    }
+  `]
 })
 export class NewGameModalComponent implements CloseGuard{
   sizes = [

@@ -21,6 +21,8 @@ import {NewGameModalComponent} from "./shared/new-game-modal.component";
 import { AboutPageComponent } from './pages/about-page.component';
 import {AuthService} from "./shared/auth.service";
 import { MessageComponent } from './shared/message.component';
+import {ResponsiveModule} from "ng2-responsive";
+
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { MessageComponent } from './shared/message.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    ResponsiveModule,
     BootstrapModalModule,
     ModalModule.forRoot(),
     routing
