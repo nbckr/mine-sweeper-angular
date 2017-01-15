@@ -5,11 +5,11 @@ import {Subscription, Observable} from "rxjs";
 @Component({
   selector: 'app-grid',
   template: `
-      <div *ngIf="gridData" class="center-block" id="grid"
-            [ngClass]="{'shake-opacity shake-constant': this.state === 'GAME_LOST', 'shake-slow shake-constant': this.state === 'GAME_WON' }">
+      <div *ngIf="gridData" class="center-block shake-constant" id="grid"
+            [ngClass]="{'shake-opacity': this.state === 'GAME_LOST', 'shake-slow': this.state === 'GAME_WON' }">
         <div *ngFor="let row of gridData" class="row">
-            <div *ngFor="let cell of row">
               <app-cell
+                *ngFor="let cell of row"
                 [hasMine]="cell.hasMine"
                 [isFlagged]="cell.isFlagged"
                 [isRevealed]="cell.isRevealed"
@@ -17,7 +17,6 @@ import {Subscription, Observable} from "rxjs";
                 [position]="cell.position"
                 [state]="this.state"
               ></app-cell>
-            </div>
         </div>
       </div>
   `,
@@ -28,7 +27,11 @@ import {Subscription, Observable} from "rxjs";
     }
     #grid {
       display: inline-block;
-      align-content: center;
+      //align-content: center;
+    }
+    .row {
+      display: block;
+      white-space: nowrap;
     }
   `]
 })

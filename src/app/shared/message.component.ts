@@ -20,9 +20,9 @@ import {Subscription} from "rxjs";
       width: 70%;
     }
     
-    img {
+      img {
       height: 6em;
-      margin-right: 1.5em;
+        margin-right: 1.5em;
     }
   `]
 })
@@ -40,7 +40,7 @@ export class MessageComponent implements OnInit {
     },
     'GAME_WON': {
       title: "You won and it was really awesome!",
-      text: "We always knew you could do it. Huge success. Tremenduous. Okay enough of it now, play again.",
+      text: "We always knew you could do it. Huge success. Tremendous. Okay enough of it now, play again.",
       image: "/assets/medal-green.svg",
       type: "alert-success"
     }

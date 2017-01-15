@@ -2,6 +2,7 @@ import {Component, ViewContainerRef} from '@angular/core';
 import {Modal, BSModalContext} from "angular2-modal/plugins/bootstrap";
 import {NewGameModalComponent} from "../shared/new-game-modal.component";
 import {overlayConfigFactory} from "angular2-modal";
+import {DataProviderService} from "../shared/dataprovider.service";
 
 
 @Component({
@@ -12,12 +13,15 @@ import {overlayConfigFactory} from "angular2-modal";
     }
     .btn {
       cursor: pointer;
+      margin-top: 1.5em;
     }
   `]
 })
 export class GamePageComponent {
 
-  constructor(private vcRef: ViewContainerRef, public modal: Modal) {
+  constructor(private vcRef: ViewContainerRef, public modal: Modal, dataProviderService: DataProviderService) {
+    console.log("construct game page component")
+    dataProviderService.sendData({action: 'touch'});
   }
 
   onNewGame() {
