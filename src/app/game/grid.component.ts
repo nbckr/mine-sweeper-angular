@@ -6,7 +6,7 @@ import {Subscription, Observable} from "rxjs";
   selector: 'app-grid',
   template: `
       <div *ngIf="gridData" class="center-block" id="grid"
-            [ngClass]="{'shake-opacity shake-constant shake-constant--hover': this.state === 'GAME_LOST', 'shake-slow shake-constant shake-constant--hover': this.state === 'GAME_WON' }">
+            [ngClass]="{'shake-opacity shake-constant': this.state === 'GAME_LOST', 'shake-slow shake-constant': this.state === 'GAME_WON' }">
         <div *ngFor="let row of gridData" class="row">
             <div *ngFor="let cell of row">
               <app-cell

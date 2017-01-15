@@ -19,9 +19,15 @@ import { Component, OnInit } from '@angular/core';
      float: right;
     }
     .lol {
-      width: 75%;
+      width: 100%;
       margin: 2em auto 1em auto;
       display: block;
+    }
+    
+    @media screen and (min-width: 768px) {
+      .lol {
+        width: 75%;
+      }
     }
   `]
 })
