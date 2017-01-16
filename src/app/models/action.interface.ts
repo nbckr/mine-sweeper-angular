@@ -1,4 +1,4 @@
-interface Action {
+export interface Action {
 
   // mandatory
   action: string;

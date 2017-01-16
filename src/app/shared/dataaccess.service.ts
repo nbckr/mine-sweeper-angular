@@ -4,6 +4,7 @@ import {Observable, ReplaySubject} from "rxjs";
 import {WebSocketService} from "./websocket.service";
 
 import {GameData} from "../models/gamedata.model";
+import {Action} from "../models/action.interface";
 
 
 @Injectable()

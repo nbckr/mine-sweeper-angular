@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ReplaySubject} from 'rxjs/Rx';
 import {AuthService} from "./auth.service";
+import {Action} from "../models/action.interface";
 
 @Injectable()
 export class WebSocketService {
