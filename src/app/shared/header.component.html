@@ -26,11 +26,11 @@
 
         <li class="form-inline navbar-toggler-right" id="login">
 
-          <button *ngIf="!currentUser" class="btn btn-sm btn-outline-primary" (click)="this.authService.signInUser()">
-            <a class="nav-link " href="#">Login</a>
+          <button *ngIf="!currentUser || !currentUser.isLoggedIn" class="btn btn-sm btn-outline-primary" (click)="onLogin()">
+            <a class="nav-link">Login</a>
           </button>
 
-          <div *ngIf="currentUser">
+          <div *ngIf="currentUser && currentUser.isLoggedIn">
             <img id="user-photo" src="{{ currentUser.photoURL }}" class="rounded float-left">
 
             <div class="btn-group">
@@ -42,9 +42,9 @@
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" (click)="this.authService.logout()">Logout</a>
+                <a class="dropdown-item" (click)="onLogout()">Logout</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item disabled" href="#">See stats</a>
+                <a class="dropdown-item disabled">See stats</a>
               </div>
             </div>
           </div>

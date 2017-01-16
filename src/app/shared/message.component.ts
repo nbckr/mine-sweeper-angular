@@ -1,5 +1,5 @@
 import {Component, OnInit, state} from '@angular/core';
-import {DataProviderService} from "./dataprovider.service";
+import {DataAccessService} from "./dataaccess.service";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -46,13 +46,12 @@ export class MessageComponent implements OnInit {
     }
   };
 
-  constructor(public dataProviderService: DataProviderService) {
+  constructor(public dataProviderService: DataAccessService) {
   }
 
   ngOnInit() {
-    this.subscription = this.dataProviderService.getGameData().subscribe(
+    this.subscription = this.dataProviderService.gameDataObservable.subscribe(
       value => {
-        console.log("got new value from subscription");
         this.state = value.state;
       }
     );

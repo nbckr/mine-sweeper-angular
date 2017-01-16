@@ -1,33 +1,55 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observer, Observable } from 'rxjs/Rx';
+import {Subject, Observer, Observable, BehaviorSubject, ReplaySubject} from 'rxjs/Rx';
+import {AuthService} from "./auth.service";
 
 @Injectable()
-export class WebsocketService{
+export class WebSocketService {
 
-  public createWebSocket(address: string): Subject<MessageEvent> {
-    console.log("websocket service: create");
+  // manage exactly one WebSocket
+  private socket: WebSocket;
 
-    let socket = new WebSocket(address);
+  // the outside world gets updates independent from who the current WebSocket is talking to
+  private _socketInputSubject: ReplaySubject<MessageEvent> = new ReplaySubject<MessageEvent>(1);
+  public socketInputObservable = this._socketInputSubject.asObservable();
 
-    let observable = Observable.create(
-      (observer: Observer<MessageEvent>) => {
-        socket.onmessage = observer.next.bind(observer);
-        socket.onerror = observer.error.bind(observer);
-        socket.onclose = observer.complete.bind(observer);
-        return socket.close.bind(socket);
+  constructor(private authService: AuthService) {
+
+    // Whenever user changes, we want to internally switch to appropriate socket
+    this.authService.currentUserObservable.subscribe(
+      user => {
+        console.log("user changed, new web socket!");
+        this.create('ws://localhost:9000/socket/' + user.id);
       }
     );
+  }
 
-    let observer = {
-      next: (data: Object) => {
-        if (socket.readyState === WebSocket.OPEN) {
-          socket.send(JSON.stringify(data));
-        } else {
-          console.error("Couldn't send: WebSocket not OPEN")
-        }
-      }
+  public create(address: string): void {
+    console.log("websocket service: create");
+
+    if (this.socket && this.socket.readyState !== WebSocket.CLOSED) {
+      this.socket.close();
+    }
+
+    this.socket = new WebSocket(address);
+
+    // little hacky to put it here, but we want to get current game state as soon as WebSocket is OPEN
+    this.socket.onopen = () => {
+      console.log('WebSocket opened.');
+      this.socket.send(JSON.stringify({action: 'touch'}))
     };
 
-    return Subject.create(observer, observable);
+    this.socket.onmessage = (value) => this._socketInputSubject.next(value);
+    this.socket.onerror = (error) => console.error('WebSocket error: ' + error);
+    this.socket.onclose = () => console.log('WebSocket closed.');
+
+  }
+
+  public send(action: Action) {
+    let message = JSON.stringify(action);
+    if (this.socket.readyState === WebSocket.OPEN) {
+      this.socket.send(message);
+    } else {
+      console.error("Couldn't send: WebSocket not OPEN")
+    }
   }
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DataProviderService} from "../shared/dataprovider.service";
+import {DataAccessService} from "../shared/dataaccess.service";
 import {Subscription, Observable} from "rxjs";
 
 @Component({
@@ -37,18 +37,15 @@ import {Subscription, Observable} from "rxjs";
 })
 export class GridComponent implements OnInit {
 
-  gridData: Object;
-  state: string;
-  private subscription: Subscription;
+  private gridData: Object;
+  private state: string;
 
-  constructor(private dataproviderService: DataProviderService) {
+  constructor(private dataproviderService: DataAccessService) {
   }
 
   ngOnInit() {
-    console.log("init grid");
-    this.subscription = this.dataproviderService.getGameData().subscribe(
+    this.dataproviderService.gameDataObservable.subscribe(
       value => {
-        console.log("got new value from subscription");
         this.gridData = value.grid;
         this.state = value.state;
       }

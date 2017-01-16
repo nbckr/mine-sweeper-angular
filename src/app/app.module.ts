@@ -10,9 +10,9 @@ import { InstructionsPageComponent } from './pages/instructions-page.component';
 import { HomePageComponent } from './pages/home-page.component';
 import { GridComponent } from './game/grid.component';
 import {routing} from "./app.routing";
-import {WebsocketService} from "./shared/websocket.service";
+import {WebSocketService} from "./shared/websocket.service";
 import { CellComponent } from './game/cell.component';
-import {DataProviderService} from "./shared/dataprovider.service";
+import {DataAccessService} from "./shared/dataaccess.service";
 import {CommonModule} from "@angular/common";
 
 import {BootstrapModalModule} from "angular2-modal/plugins/bootstrap";
@@ -22,6 +22,17 @@ import { AboutPageComponent } from './pages/about-page.component';
 import {AuthService} from "./shared/auth.service";
 import { MessageComponent } from './shared/message.component';
 import {ResponsiveModule} from "ng2-responsive";
+import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
+
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAyrbUQ3mDVVOhcANZfCWpDoCC6HZgKyvU",
+  authDomain: "mine-sweeper-polymer.firebaseapp.com",
+  databaseURL: "https://mine-sweeper-polymer.firebaseio.com/"
+  //messagingSenderId: "996548128709"
+};
+
 
 
 @NgModule({
@@ -45,11 +56,15 @@ import {ResponsiveModule} from "ng2-responsive";
     ResponsiveModule,
     BootstrapModalModule,
     ModalModule.forRoot(),
-    routing
+    routing,
+    AngularFireModule.initializeApp(firebaseConfig,{
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup
+    })
   ],
   providers: [
-    WebsocketService,
-    DataProviderService,
+    WebSocketService,
+    DataAccessService,
     AuthService
   ],
   entryComponents: [

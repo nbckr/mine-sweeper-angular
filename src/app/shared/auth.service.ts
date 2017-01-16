@@ -1,55 +1,57 @@
 import {Injectable} from "@angular/core";
-import {Router} from "@angular/router";
-import {Subject} from "rxjs";
-import {User} from "./user.model";
+import {Subject, BehaviorSubject, Observable} from "rxjs";
+import {User} from "../models/user.model";
+import { AngularFire, AuthProviders } from 'angularfire2';
 
-// Tell TypeScript about this variable "quick and dirty" instead of installing actual firebase component with npm
-declare var firebase: any;
 
 @Injectable()
 export class AuthService {
 
-  private provider = new firebase.auth.GoogleAuthProvider();
+  // Generate an ID for this client to be used if he doesn't log in
+  private defaultUser = new User(null, null, this.generateGUID(), false);
 
-  public currentUser: User;
+  // BehaviorSubject will return upon subscription the last value of the stream, or an initial state if no value was emitted yet
+  private _currentUserSubject: BehaviorSubject<User> = new BehaviorSubject(this.defaultUser);
+  public currentUserObservable: Observable<User> = this._currentUserSubject.asObservable();
 
-  constructor(private router: Router) {}
+  constructor(public af: AngularFire) {
 
-  signUpUser(user: User){
-    // firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-    //   .catch(function (err) {
-    //     console.log(err);
-    //   });
-  }
-
-  signInUser() {
-    //firebase.auth().signInWithEmailAndPassword(user.email, user.password)
-    firebase.auth().signInWithPopup(this.provider)
-      .then((result) => {
-        this.currentUser = new User(result.user.displayName, result.user.photoURL);
-        console.log("Successfully logged in with Google: " + result.user)
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
-  }
-
-  logout() {
-    firebase.auth().signOut(); // token aus LocalStorage löschen
-    this.currentUser = null;
-    //this.router.navigate(['/signin']);
-  }
-
-  isAuthenticated() {
-    const state = new Subject<User>(); // "flexible Variable", ähnlich Observable, aber aktiv nicht nur passiv (auch ändern)
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        console.log(user);
-        state.next(new User(user.displayName, user.photoURL));
-      } else {
-        state.next(null);
+    this.af.auth.subscribe(response => {
+      if(response) {
+        // user logged in
+        let userInfo: firebase.User = response.auth;
+        this._currentUserSubject.next(new User(userInfo.displayName, userInfo.photoURL, userInfo.email, true)); // TODO this causes delay
+        console.log("User logged in: " + userInfo.displayName);
+      }
+      else {
+        // user not logged in
+        console.log("User logged out.");
+        this._currentUserSubject.next(this.defaultUser);
       }
     });
-    return state.asObservable();
+  }
+
+  login(): void {
+    this.af.auth.login({
+      provider: AuthProviders.Google
+    });
+  }
+
+  logout(): void {
+    this.af.auth.logout();
+  }
+
+  /**
+   * http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+   */
+  generateGUID() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4();
   }
 }

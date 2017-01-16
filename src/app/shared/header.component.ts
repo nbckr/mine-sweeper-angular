@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AuthService} from "./auth.service";
+import {User} from "../models/user.model";
 
 @Component({
   selector: 'app-header',
@@ -34,15 +35,21 @@ import {AuthService} from "./auth.service";
 })
 export class HeaderComponent{
 
-  currentUser = null;
+  currentUser: User;
 
   constructor(private authService: AuthService) {
-    this.authService.isAuthenticated().subscribe(
+    this.authService.currentUserObservable.subscribe(
       authUser => {
-        console.log("AuthStatus changed:");
-        console.log(authUser);
-        this.currentUser = authUser
+        this.currentUser = authUser;
       }
     );
   };
+
+  onLogin() {
+    this.authService.login();
+  }
+
+  onLogout() {
+    this.authService.logout();
+  }
 }

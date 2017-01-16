@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DialogRef, CloseGuard } from 'angular2-modal';
 import { BSModalContext } from 'angular2-modal/plugins/bootstrap';
-import {DataProviderService} from "./dataprovider.service";
+import {DataAccessService} from "./dataaccess.service";
 
 export class CustomModalContext extends BSModalContext {
   public num1: number;
@@ -37,7 +37,7 @@ export class NewGameModalComponent implements CloseGuard {
     'intermediate',
     'expert'
   ];
-  options = {
+  options: Action = {
     action: 'start',
     difficulty: this.difficulties[0],
     size: this.sizes[0]
@@ -45,13 +45,13 @@ export class NewGameModalComponent implements CloseGuard {
 
   context: CustomModalContext;
 
-  constructor(public dialog: DialogRef<CustomModalContext>, private dataProviderService: DataProviderService) {
+  constructor(public dialog: DialogRef<CustomModalContext>, private dataProviderService: DataAccessService) {
     this.context = dialog.context;
     dialog.setCloseGuard(this);
   }
 
   public onStartGame() {
-    this.dataProviderService.sendData(this.options);
+    this.dataProviderService.sendAction(this.options);
     this.dialog.close();
   }
 

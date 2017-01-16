@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DataProviderService} from "./shared/dataprovider.service";
+import {DataAccessService} from "./shared/dataaccess.service";
 
 import { Overlay } from 'angular2-modal';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
@@ -11,13 +11,10 @@ import { Modal } from 'angular2-modal/plugins/bootstrap';
 })
 export class AppComponent implements OnInit{
 
-  constructor(public dataproviderService: DataProviderService) {
+  constructor() {
   }
 
   ngOnInit() {
-    // Init data provider as early as possible to open WebSockets
-    this.dataproviderService.initService();
-
     // Prevent right clicks - would be better to only disable within grid
     document.oncontextmenu = function(e){
       e.stopPropagation();

@@ -1,13 +1,10 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Position} from "./position.model";
-import {DataProviderService} from "../shared/dataprovider.service";
+import {Position} from "../models/position.model";
+import {DataAccessService} from "../shared/dataaccess.service";
 
 @Component({
   selector: 'app-cell',
   template: `
-
-
-
     <button (click)="onClick()" (contextmenu)="onRightClick()" 
       class="surrounding-{{ surroundingMines }}"
       [ngClass]="{'mine': hasMine, 'hidden': !isRevealed, 'shake-crazy shake-constant': hasMine && isRevealed, 'shake-hard shake-constant': hasMine && state === 'GAME_LOST' }">
@@ -29,18 +26,17 @@ export class CellComponent implements OnInit {
   @Input() surroundingMines: number = 0;
   @Input() state: string;
 
-  constructor(public dataproviderService: DataProviderService) {}
+  constructor(private dataAccessService: DataAccessService) {}
 
   ngOnInit() {
   }
 
-  onClick(e) {
-    console.log("CLICK");
-    this.dataproviderService.sendGameMove('reveal', this.position.row, this.position.col);
+  onClick() {
+    this.dataAccessService.sendGameMove('reveal', this.position.row, this.position.col);
   }
 
   onRightClick() {
-    this.dataproviderService.sendGameMove('flag', this.position.row, this.position.col);
+    this.dataAccessService.sendGameMove('flag', this.position.row, this.position.col);
 
   }
 }
