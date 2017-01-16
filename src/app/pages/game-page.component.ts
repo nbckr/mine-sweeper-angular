@@ -23,6 +23,6 @@ export class GamePageComponent {
 
   onNewGame() {
     // we set the baseContextType to BSModalContext so the defaults for bootstrap will apply
-    this.modal.open(NewGameModalComponent, overlayConfigFactory({ num1: 2, num2: 3 }, BSModalContext));
+    this.modal.open(NewGameModalComponent, overlayConfigFactory({}, BSModalContext));
   }
 }

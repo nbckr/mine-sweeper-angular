@@ -3,11 +3,8 @@ import { Component } from '@angular/core';
 import { DialogRef, CloseGuard } from 'angular2-modal';
 import { BSModalContext } from 'angular2-modal/plugins/bootstrap';
 import {DataAccessService} from "./dataaccess.service";
+import {Action} from "../models/action.interface";
 
-export class CustomModalContext extends BSModalContext {
-  public num1: number;
-  public num2: number;
-}
 
 @Component({
   selector: 'app-modal',
@@ -43,10 +40,8 @@ export class NewGameModalComponent implements CloseGuard {
     size: this.sizes[0]
   };
 
-  context: CustomModalContext;
-
-  constructor(public dialog: DialogRef<CustomModalContext>, private dataProviderService: DataAccessService) {
-    this.context = dialog.context;
+  constructor(public dialog: DialogRef<any>, private dataProviderService: DataAccessService) {
+    //this.context = dialog.context;
     dialog.setCloseGuard(this);
   }
 
