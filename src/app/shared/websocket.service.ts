@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Subject, Observer, Observable, BehaviorSubject, ReplaySubject} from 'rxjs/Rx';
+import {ReplaySubject} from 'rxjs/Rx';
 import {AuthService} from "./auth.service";
 
 @Injectable()
@@ -17,15 +17,13 @@ export class WebSocketService {
     // Whenever user changes, we want to internally switch to appropriate socket
     this.authService.currentUserObservable.subscribe(
       user => {
-        console.log("user changed, new web socket!");
+        console.log("User changed, open new WebSocket!");
         this.create('ws://localhost:9000/socket/' + user.id);
       }
     );
   }
 
   public create(address: string): void {
-    console.log("websocket service: create");
-
     if (this.socket && this.socket.readyState !== WebSocket.CLOSED) {
       this.socket.close();
     }

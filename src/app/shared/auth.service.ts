@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Subject, BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {User} from "../models/user.model";
 import { AngularFire, AuthProviders } from 'angularfire2';
 
@@ -25,8 +25,8 @@ export class AuthService {
       }
       else {
         // user not logged in
-        console.log("User logged out.");
         this._currentUserSubject.next(this.defaultUser);
+        console.log("User logged out.");
       }
     });
   }

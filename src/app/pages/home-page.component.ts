@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -15,12 +15,9 @@ import {Router} from "@angular/router";
     }
   `]
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent {
 
   constructor(private router: Router) { }
-
-  ngOnInit() {
-  }
 
   onPlayGame() {
     this.router.navigate(['/game']);

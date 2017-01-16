@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, ReplaySubject} from "rxjs";
 
 import {WebSocketService} from "./websocket.service";

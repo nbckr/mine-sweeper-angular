@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-instructions',
@@ -31,11 +31,8 @@ import { Component, OnInit } from '@angular/core';
     }
   `]
 })
-export class InstructionsPageComponent implements OnInit {
+export class InstructionsPageComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

@@ -2,7 +2,6 @@ import {Component, ViewContainerRef} from '@angular/core';
 import {Modal, BSModalContext} from "angular2-modal/plugins/bootstrap";
 import {NewGameModalComponent} from "../shared/new-game-modal.component";
 import {overlayConfigFactory} from "angular2-modal";
-import {DataAccessService} from "../shared/dataaccess.service";
 
 
 @Component({
@@ -20,7 +19,6 @@ import {DataAccessService} from "../shared/dataaccess.service";
 export class GamePageComponent {
 
   constructor(private vcRef: ViewContainerRef, public modal: Modal) {
-    console.log("construct game page component")
   }
 
   onNewGame() {
