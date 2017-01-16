@@ -19,7 +19,7 @@ export class WebSocketService {
     this.authService.currentUserObservable.subscribe(
       user => {
         console.log("User changed, open new WebSocket!");
-        this.create('ws://localhost:9000/socket/' + user.id);
+        this.create('wss://minesweeper-htwg.herokuapp.com/socket/' + user.id);
       }
     );
   }
