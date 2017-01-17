@@ -37,7 +37,12 @@ export class WebSocketService {
       this.socket.send(JSON.stringify({action: 'touch'}))
     };
 
-    this.socket.onmessage = (value) => this._socketInputSubject.next(value);
+    this.socket.onmessage = (value) => {
+      // We send pings periodically to keep WebSocket alive.
+      if (value.data === 'ping') return;
+
+      this._socketInputSubject.next(value);
+    };
     this.socket.onerror = (error) => console.error('WebSocket error: ' + error);
     this.socket.onclose = () => console.log('WebSocket closed.');
 
