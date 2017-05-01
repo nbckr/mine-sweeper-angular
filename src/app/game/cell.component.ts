@@ -37,6 +37,6 @@ export class CellComponent implements OnInit {
 
   onRightClick() {
     this.dataAccessService.sendGameMove('flag', this.position.row, this.position.col);
-
+    navigator.vibrate(75);
   }
 }
