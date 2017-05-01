@@ -23,6 +23,7 @@ import {AuthService} from "./shared/auth.service";
 import { MessageComponent } from './shared/message.component';
 import {ResponsiveModule} from "ng2-responsive";
 import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
+import { GameManagementComponent } from './shared/game-management.component';
 
 
 
@@ -46,7 +47,8 @@ const firebaseConfig = {
     CellComponent,
     NewGameModalComponent,
     AboutPageComponent,
-    MessageComponent
+    MessageComponent,
+    GameManagementComponent
   ],
   imports: [
     CommonModule,
