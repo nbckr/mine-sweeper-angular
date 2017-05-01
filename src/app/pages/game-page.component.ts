@@ -1,7 +1,4 @@
-import {Component, ViewContainerRef} from '@angular/core';
-import {Modal, BSModalContext} from "angular2-modal/plugins/bootstrap";
-import {NewGameModalComponent} from "../shared/new-game-modal.component";
-import {overlayConfigFactory} from "angular2-modal";
+import {Component} from '@angular/core';
 
 
 @Component({
@@ -18,11 +15,7 @@ import {overlayConfigFactory} from "angular2-modal";
 })
 export class GamePageComponent {
 
-  constructor(private vcRef: ViewContainerRef, public modal: Modal) {
+  constructor() {
   }
 
-  onNewGame() {
-    // we set the baseContextType to BSModalContext so the defaults for bootstrap will apply
-    this.modal.open(NewGameModalComponent, overlayConfigFactory({}, BSModalContext));
-  }
 }
