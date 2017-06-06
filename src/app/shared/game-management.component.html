@@ -14,3 +14,20 @@
   </div>
 
 </div>
+
+<div class="btn-group">
+
+  <button class="btn btn-primary">Solve...</button>
+
+  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right">
+    <a class="dropdown-item" (click)="onSolveAll()">Solve all without guessing</a>
+    <a class="dropdown-item" (click)="onGiveHint()">Give one hint</a>
+    <a class="dropdown-item" (click)="onShowProbabilites()">Show probabilities</a>
+  </div>
+
+</div>

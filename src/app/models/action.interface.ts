@@ -10,4 +10,7 @@ export interface Action {
   // start game
   size?: string;
   difficulty?: string;
+
+  // solver
+  option?: string;
 }

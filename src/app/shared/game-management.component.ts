@@ -35,4 +35,16 @@ export class GameManagementComponent {
     this.dataProviderService.sendAction({ action: 'load' });
   }
 
+  onSolveAll() {
+    this.dataProviderService.sendAction({ action: 'solve', option: 'all' });
+  }
+
+  onGiveHint() {
+    this.dataProviderService.sendAction({ action: 'solve', option: 'hint' });
+
+  }
+
+  onShowProbabilites() {
+    this.dataProviderService.sendAction({ action: 'solve', option: 'probabilities' });
+  }
 }
