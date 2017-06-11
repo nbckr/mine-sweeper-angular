@@ -35,16 +35,16 @@ export class GameManagementComponent {
     this.dataProviderService.sendAction({ action: 'load' });
   }
 
+  onSolveOne() {
+    this.dataProviderService.sendAction({ action: 'solve', type: 'one' });
+
+  }
+
   onSolveAll() {
-    this.dataProviderService.sendAction({ action: 'solve', option: 'all' });
+    this.dataProviderService.sendAction({ action: 'solve', type: 'all' });
   }
 
-  onGiveHint() {
-    this.dataProviderService.sendAction({ action: 'solve', option: 'hint' });
-
-  }
-
-  onShowProbabilites() {
-    this.dataProviderService.sendAction({ action: 'solve', option: 'probabilities' });
+  onSingleStep() {
+    this.dataProviderService.sendAction({ action: 'solve', type: 'single_step' });
   }
 }

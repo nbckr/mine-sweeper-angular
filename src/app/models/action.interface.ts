@@ -12,5 +12,5 @@ export interface Action {
   difficulty?: string;
 
   // solver
-  option?: string;
+  type?: string;
 }
